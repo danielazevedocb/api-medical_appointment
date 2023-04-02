@@ -1,6 +1,6 @@
 import { CustomError } from "../../../../errors/custom.error"
 import { IPasswordCrypto } from "../../../../infra/shared/crypto/password.crypto"
-import { IUserRespositiry } from "../../repositories/user.repository"
+import { IUserRespository } from "../../repositories/user.repository"
 
 
 type AuthenticateRequest = {
@@ -16,7 +16,7 @@ export class AuthenticateUserUseCase {
      * validar se a senha está correta
      */
 
-    constructor(private userRepository: IUserRespositiry, private passwordCrypto: IPasswordCrypto){}
+    constructor(private userRepository: IUserRespository, private passwordCrypto: IPasswordCrypto){}
 
     async execute({username, password}: AuthenticateRequest){
 
@@ -26,6 +26,7 @@ export class AuthenticateUserUseCase {
 
     const user = await  this.userRepository.findByUsername(username);
 
+    
     if(!user) {
         throw new  CustomError('User/password incorrent', 401)
     }

@@ -1,8 +1,8 @@
 import { prismaClient } from "../../../../infra/database/prisma.config";
 import { User } from "../../entities/user.entity";
-import { IUserRespositiry } from "../user.repository";
+import { IUserRespository } from "../user.repository";
 
-export class UserPrismaRespository implements IUserRespositiry{
+export class UserPrismaRespository implements IUserRespository{
   async findByUsername(username: string): Promise<User | undefined> {
     
     const user = await prismaClient.user.findUnique({

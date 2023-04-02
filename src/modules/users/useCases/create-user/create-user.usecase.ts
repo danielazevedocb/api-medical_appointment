@@ -2,7 +2,7 @@ import { CustomError } from "../../../../errors/custom.error"
 import { ParameterRequiredError } from "../../../../errors/parameter-required.error"
 import { IPasswordCrypto } from "../../../../infra/shared/crypto/password.crypto"
 import { User } from "../../entities/user.entity"
-import { IUserRespositiry } from "../../repositories/user.repository"
+import { IUserRespository } from "../../repositories/user.repository"
 
 type UserRequest = {
   name: string,
@@ -12,7 +12,7 @@ type UserRequest = {
 
 export class CreateUserUseCase {
   
-  constructor(private userRespository: IUserRespositiry, private passwordCrypto: IPasswordCrypto){ }
+  constructor(private userRespository: IUserRespository, private passwordCrypto: IPasswordCrypto){ }
 
   async execute(data: UserRequest) {
     

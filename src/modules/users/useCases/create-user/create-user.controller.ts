@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { IPasswordCrypto } from "../../../../infra/shared/crypto/password.crypto";
 import { logger } from "../../../../utils/logger";
-import { IUserRespositiry } from "../../repositories/user.repository";
+import { IUserRespository } from "../../repositories/user.repository";
 import { CreateUserUseCase } from "./create-user.usecase";
 
 export class CreateUserController {
 
-  constructor(private userRespository: IUserRespositiry, private passwordCrypto: IPasswordCrypto){
+  constructor(private userRespository: IUserRespository, private passwordCrypto: IPasswordCrypto){
 
   }
 
