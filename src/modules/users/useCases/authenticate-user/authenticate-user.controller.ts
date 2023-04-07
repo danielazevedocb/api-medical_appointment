@@ -18,7 +18,10 @@ export class AuthenticateUserController {
         try{
             const data = request.body
 
-            const authenticateUserUseCase = new AuthenticateUserUseCase(this.userRepository, this.passwordCrypt, this.token)
+            const authenticateUserUseCase = new AuthenticateUserUseCase(
+                this.userRepository,
+                this.passwordCrypt,
+                this.token)
 
             const result = await authenticateUserUseCase.execute(data)
 
