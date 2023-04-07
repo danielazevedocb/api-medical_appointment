@@ -9,6 +9,11 @@
     "/specialities": {
       "post": {
         "tags": ["speciality"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "description": "Cadastro de especlialidade",
         "requestBody": {
           "content": {
@@ -20,39 +25,39 @@
           }
         },
         "responses": {
-            "200": {
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/SpecialityResponse"
-                  }
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecialityResponse"
                 }
               }
             }
-          }          
+          }
+        }
       }
     },
     "/login": {
       "post": {
         "description": "Autenticação do usário",
         "tags": ["users"],
-      "requestBody": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/LoginRequest"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
             }
           }
-        }
-      },
-      "responses": {
-        "200": {
-          "description": "Token gerado"
         },
-        "401": {
-          "description": "Messagem de erro"
+        "responses": {
+          "200": {
+            "description": "Token gerado"
+          },
+          "401": {
+            "description": "Messagem de erro"
+          }
         }
-      }
       }
     }
   },
@@ -99,21 +104,30 @@
           }
         }
       },
-    "LoginRequest": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string",
-          "description": "username de login",
-          "example": "username_test"
-        },
-        "password": {
-          "type": "string",
-          "description": "passoword de login",
-          "example": "password_test"
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "username de login",
+            "example": "username_test"
+          },
+          "password": {
+            "type": "string",
+            "description": "passoword de login",
+            "example": "password_test"
+          }
         }
       }
-    }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "description": "Autenticação da API",
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "tokenUrl": "http://localhost:3000/login"
+      }
     }
   }
 }

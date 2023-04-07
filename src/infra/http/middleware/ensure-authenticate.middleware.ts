@@ -7,8 +7,7 @@ import { JWTToken } from "../../shared/token/jwt.token";
 export const ensureAuthenticate = (request: Request, response: Response, next: NextFunction) => {
     
     const headerAuth =  request.headers.authorization
-    console.log(headerAuth)
-
+    
     if(!headerAuth){
         return response.status(401).json({
             error: 'Token is missing'
