@@ -31,6 +31,29 @@
             }
           }          
       }
+    },
+    "/login": {
+      "post": {
+        "description": "Autenticação do usário",
+        "tags": ["users"],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/LoginRequest"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Token gerado"
+        },
+        "401": {
+          "description": "Messagem de erro"
+        }
+      }
+      }
     }
   },
   "components": {
@@ -75,7 +98,22 @@
             "format": "date-time"
           }
         }
+      },
+    "LoginRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "username de login",
+          "example": "username_test"
+        },
+        "password": {
+          "type": "string",
+          "description": "passoword de login",
+          "example": "password_test"
+        }
       }
+    }
     }
   }
 }
