@@ -16,7 +16,7 @@
 
 ### **Cadastro de Especialidade**
 - [ ] Deve ser possivel um usuario cadastar uma especilidade
-  - [x] O usuario precisa estar autentticado na aplicação.
-  - [ ] Não deve ser possivel realizar o cadastro de uma especilidade já existente, ou seja, com o mesmo nome.
-  - [ ] O usuario precisa ter permissão de administrador.
+  - [x] O usuario precisa estar autenticado na aplicação.
+  - [x] Não deve ser possivel realizar o cadastro de uma especilidade já existente, ou seja, com o mesmo nome.
+  - [x] O usuario precisa ter permissão de administrador.
   - [x] Não deve ser possivel cadastrar uma especialidade com o nome vazio.

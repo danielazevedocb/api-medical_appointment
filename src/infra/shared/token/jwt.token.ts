@@ -2,7 +2,7 @@ import { sign, verify } from "jsonwebtoken";
 import { createHmac } from "crypto";
 
 import { User } from "@prisma/client";
-import { IToken } from "./token";
+import { IToken, TokenUser } from "./token";
 
 export class JWTToken implements IToken {    
 
@@ -19,18 +19,18 @@ export class JWTToken implements IToken {
             }
         }, this.TOKEN_SECRET_CRYPTO, {
             subject: id,
-            expiresIn: '1d'
+            expiresIn: '30d'
         })
         return token
     }
 
-    valite(token: string): boolean {
+    valite(token: string): TokenUser | null {
         
         try{
-            verify(token, this.TOKEN_SECRET_CRYPTO)
-            return true
+            return verify(token, this.TOKEN_SECRET_CRYPTO) as TokenUser
+            
         }catch{
-            return false
+            return null
         }
     }
 

@@ -4,7 +4,7 @@ import { randomUUID } from "crypto"
 type IUser = {
   name: string,
   password: string,
-  username: string
+  username: string,
 }
 
 export class User {
