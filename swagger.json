@@ -1,133 +1,133 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Serviço de agendamento de consultar",
-    "description": "Essa API é responsavel pelo agendamento de consultar",
-    "version": "1.0.0"
-  },
-  "paths": {
-    "/specialities": {
-      "post": {
-        "tags": ["speciality"],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "description": "Cadastro de especlialidade",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SpecialityRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SpecialityResponse"
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Serviço de agendamento de consultar",
+        "description": "Essa API é responsavel pelo agendamento de consultar",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/specialities": {
+            "post": {
+                "tags": ["speciality"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "description": "Cadastro de especlialidade",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SpecialityRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SpecialityResponse"
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
-        }
-      }
-    },
-    "/login": {
-      "post": {
-        "description": "Autenticação do usário",
-        "tags": ["users"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
-              }
+        },
+        "/login": {
+            "post": {
+                "description": "Autenticação do usário",
+                "tags": ["users"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Token gerado"
+                    },
+                    "401": {
+                        "description": "Messagem de erro"
+                    }
+                }
             }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Token gerado"
-          },
-          "401": {
-            "description": "Messagem de erro"
-          }
         }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "SpecialityRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Nome da especialidade",
-            "example": "NAME_TEST"
-          },
-          "description": {
-            "type": "string",
-            "description": "Descrição da especialidade",
-            "example": "DESCRIPTION_TEST"
-          }
-        },
-        "required": ["name", "description"]
-      },
-      "SpecialityResponse": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Nome da especialidade",
-            "example": "NAME_TEST"
-          },
-          "description": {
-            "type": "string",
-            "description": "Descrição da especialidade",
-            "example": "DESCRIPTION_TEST"
-          },
-          "id": {
-            "type": "string",
-            "description": "Id da especialidade",
-            "format": "uuid"
-          },
-          "createAt": {
-            "type": "string",
-            "description": " Data da criação da especilidade",
-            "format": "date-time"
-          }
-        }
-      },
-      "LoginRequest": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "description": "username de login",
-            "example": "username_test"
-          },
-          "password": {
-            "type": "string",
-            "description": "passoword de login",
-            "example": "password_test"
-          }
-        }
-      }
     },
-    "securitySchemes": {
-      "bearerAuth": {
-        "description": "Autenticação da API",
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT",
-        "tokenUrl": "http://localhost:3000/login"
-      }
+    "components": {
+        "schemas": {
+            "SpecialityRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Nome da especialidade",
+                        "example": "NAME_TEST"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Descrição da especialidade",
+                        "example": "DESCRIPTION_TEST"
+                    }
+                },
+                "required": ["name", "description"]
+            },
+            "SpecialityResponse": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Nome da especialidade",
+                        "example": "NAME_TEST"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Descrição da especialidade",
+                        "example": "DESCRIPTION_TEST"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Id da especialidade",
+                        "format": "uuid"
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "description": " Data da criação da especilidade",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "LoginRequest": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "description": "username de login",
+                        "example": "username_test"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "passoword de login",
+                        "example": "password_test"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "description": "Autenticação da API",
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+                "tokenUrl": "http://localhost:3000/login"
+            }
+        }
     }
-  }
 }

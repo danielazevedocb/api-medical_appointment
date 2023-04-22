@@ -1,32 +1,33 @@
 import { User } from "../../entities/user.entity";
-import { IUserRespositiry } from "../user.repository";
+import { IUserRespository } from "../user.repository";
 
-export class UserMemoryRepository implements IUserRespositiry {
+export class UserMemoryRepository implements IUserRespository {
+    users: User[];
 
-users: User[]
+    private static instance: UserMemoryRepository;
 
-private static instance: UserMemoryRepository;
+    constructor() {
+        this.users = [];
+    }
 
-constructor() {
-  this.users = []
-}
+    static getInstance() {
+        if (!UserMemoryRepository.instance) {
+            UserMemoryRepository.instance = new UserMemoryRepository();
+        }
 
-static getInstance(){
+        return UserMemoryRepository.instance;
+    }
 
-  if(!UserMemoryRepository.instance) {
-    UserMemoryRepository.instance = new UserMemoryRepository()
-  }
+    async findByUsername(username: string) {
+        return this.users.find((user) => user.username === username);
+    }
 
-  return UserMemoryRepository.instance;
-}
+    async save(data: User) {
+        this.users.push(data);
+        return data;
+    }
 
-  async findByUsername(username: string) {
-    return this.users.find(user => user.username === username)
-
-  }
-
-  async save(data: User) {
-    this.users.push(data)
-    return data
-  }
+    async findById(id: string): Promise<User | null> {
+        return this.users.find((user) => user.id === id) || null;
+    }
 }

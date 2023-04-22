@@ -20,3 +20,14 @@
   - [x] Não deve ser possivel realizar o cadastro de uma especilidade já existente, ou seja, com o mesmo nome.
   - [x] O usuario precisa ter permissão de administrador.
   - [x] Não deve ser possivel cadastrar uma especialidade com o nome vazio.
+
+---
+
+### **Cadastro de Medico**
+- [] Deve ser possivel cadastrar um medico
+ - []O médico deve possuir um CRM com 6 digitos
+ - []O médico deve estar atrelado a um usuario
+ - []O médico dever ter uma e somente uma especilialidade
+ - []Não deve ser possivel cadastrar um medico sem CRM
+ - []Não deve ser possivel cadastrar o mesmo CRM mais de uma vez.
+

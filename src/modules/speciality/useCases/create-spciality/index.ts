@@ -1,8 +1,9 @@
 import { SpecialityPrismaRepository } from "../../repositories/implementations/speciality.prisma.respository";
 import { CreateSpecialityController } from "./create-speciality.controller";
 
-const specialityPrismaRepository = new SpecialityPrismaRepository()
-const createSpecialityController = new CreateSpecialityController(specialityPrismaRepository)
+const specialityPrismaRepository = new SpecialityPrismaRepository();
+const createSpecialityController = new CreateSpecialityController(
+    specialityPrismaRepository
+);
 
-
-export { createSpecialityController }
+export { createSpecialityController };

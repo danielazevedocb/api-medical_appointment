@@ -5,11 +5,13 @@ import { ensureAdmin } from "../infra/http/middleware/ensure-admin.middleware";
 
 const specialityRouter = Router();
 
-specialityRouter.post("/specialities",
- ensureAuthenticate,
- ensureAdmin,
- async (request, response) =>{
-    await createSpecialityController.handle(request, response)
-})
+specialityRouter.post(
+    "/specialities",
+    ensureAuthenticate,
+    ensureAdmin,
+    async (request, response) => {
+        await createSpecialityController.handle(request, response);
+    }
+);
 
-export { specialityRouter }; 
+export { specialityRouter };
