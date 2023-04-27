@@ -5,8 +5,7 @@ import { CreateUserController } from "./create-user.controller";
 const userPrimaRespository = new UserPrismaRespository();
 const passwordBcrypt = new PasswordBcrypt();
 const createUserController = new CreateUserController(
-    userPrimaRespository,
-    passwordBcrypt
+    userPrimaRespository
 );
 
 export { createUserController };

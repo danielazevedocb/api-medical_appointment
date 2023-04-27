@@ -14,7 +14,7 @@ describe("Doctor entity", () => {
         expect(doctor).toHaveProperty("id");
     });
 
-    test("should not b able to create a new doctor with CRM invalid", () => {
+    test("should not be able to create a new doctor with CRM invalid", () => {
         expect(() => {
             Doctor.create({
                 crm: "",
@@ -25,7 +25,7 @@ describe("Doctor entity", () => {
         }).toThrow("CRM is required!");
     });
 
-    test("should not b able to create a new doctor with CRM  length invalid", () => {
+    test("should not be able to create a new doctor with CRM  length invalid", () => {
         expect(() => {
             Doctor.create({
                 crm: "12345",
@@ -36,7 +36,7 @@ describe("Doctor entity", () => {
         }).toThrow("CRM length is incorrect!");
     });
 
-    test("should not b able to create a new doctor with Email invalid", () => {
+    test("should not be able to create a new doctor with Email invalid", () => {
         expect(() => {
             Doctor.create({
                 crm: "123456",

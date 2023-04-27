@@ -11,13 +11,10 @@ type UserRequest = {
 };
 
 export class CreateUserUseCase {
-    constructor(
-        private userRespository: IUserRespository,
-        private passwordCrypto: IPasswordCrypto
-    ) {}
+    constructor(private userRespository: IUserRespository) {}
 
     async execute(data: UserRequest) {
-        const user = User.create(data);
+        const user = await User.create(data);
 
         if (!data.username || !data.password) {
             throw new ParameterRequiredError(
@@ -37,9 +34,6 @@ export class CreateUserUseCase {
                 "USER_EXISTS_ERROR"
             );
         }
-
-        const passwordHasdred = await this.passwordCrypto.hash(data.password);
-        user.password = passwordHasdred;
 
         const userCreated = await this.userRespository.save(user);
 
